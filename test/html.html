@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">click</button>
+<script>
+    window.id = 'window'
+    const btn = document.querySelector('#btn');
+    btn.onclick = function () {
+        console.log(this.id)
+        const cb= function () {
+            console.log(this.id)
+        }
+        cb()
+    }
+</script>
+</body>
+</html>
