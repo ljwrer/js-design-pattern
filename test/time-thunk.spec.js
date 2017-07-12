@@ -10,17 +10,17 @@ describe('timeThunk', function () {
         const add = function (item) {
             dist.push(item)
         }
-        const timeThunkAdd = timeThunk(source,add,20,20)
+        const timeThunkAdd = timeThunk(source,add,20,10)
         timeThunkAdd()
         setTimeout(function () {
             assert.lengthOf(dist,60)
-        },45)
+        },25)
         setTimeout(function () {
             assert.lengthOf(dist,80)
-        },65)
+        },35)
         setTimeout(function () {
             assert.lengthOf(dist,100)
             done()
-        },105)
+        },55)
     })
 })
