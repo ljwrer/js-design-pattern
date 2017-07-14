@@ -2,25 +2,20 @@
  * Created by Ray on 2017/7/11.
  */
 const timeThunk = require('../clousure/time-chunk')
+const sinon = require('sinon')
 const assert = require('chai').assert;
 describe('timeThunk', function () {
-    it('should be timeThunk', function (done) {
-        const source = Array(100).fill(null)
-        const dist = []
-        const add = function (item) {
-            dist.push(item)
-        }
-        const timeThunkAdd = timeThunk(source,add,20,10)
+    it('should be timeThunk', function () {
+        const clock = sinon.useFakeTimers();
+        const spy = sinon.spy()
+        const timeThunkAdd = timeThunk(Array(100).fill(null),spy,20,1000)
         timeThunkAdd()
-        setTimeout(function () {
-            assert.lengthOf(dist,60)
-        },25)
-        setTimeout(function () {
-            assert.lengthOf(dist,80)
-        },35)
-        setTimeout(function () {
-            assert.lengthOf(dist,100)
-            done()
-        },55)
+        clock.tick(2500)
+        sinon.assert.callCount(spy,60)
+        clock.tick(1000)
+        sinon.assert.callCount(spy,80)
+        clock.tick(2000)
+        sinon.assert.callCount(spy,100)
+        clock.restore()
     })
 })

@@ -5,9 +5,14 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.0.2",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.7"
   },
   "scripts": {
     "test": "mocha"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "pubsub-js": "^1.5.7"
   }
 }

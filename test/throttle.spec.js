@@ -2,22 +2,24 @@
  * Created by Ray on 2017/7/11.
  */
 const throttle = require('../clousure/throttle')
-const assert = require('chai').assert;
+const sinon = require('sinon')
 describe('throttle', function () {
+    let clock;
+    before(function () {
+        clock = sinon.useFakeTimers();
+    })
+    after(function () {
+        clock.restore()
+    })
     it('should be throttle', function (done) {
-        const arr = []
-        const add = function () {
-            arr.push(arr.length)
-        }
-        const throttleAdd = throttle(add,10)
-        for (let i=0;i<10;i++){
-            setTimeout(function () {
-                throttleAdd()
-                if(i===9){
-                    assert.lengthOf(arr,3)
-                    done()
-                }
-            },3*i)
-        }
+        const spy = sinon.spy()
+        const throttleSpy = throttle(spy,1000)
+        const tid = setInterval(function () {
+            throttleSpy()
+        },600)
+        clock.tick(10000)
+        clearInterval(tid)
+        sinon.assert.callCount(spy, 8)
+        done()
     })
 })

@@ -2,6 +2,7 @@
  * Created by Ray on 2017/7/11.
  */
 const getSingle = require('../singleton/getSingle')
+const sinon = require("sinon");
 const assert = require('chai').assert;
 class Person{
     constructor(name){
@@ -21,16 +22,11 @@ describe('getSingle', function () {
         assert.strictEqual(Carol,Amy)
     })
     it('should involve only once', function () {
-        const list = []
-        const push = getSingle(function () {
-            list.push(list.length)
-            return true
-        });
-        push()
-        push()
-        push()
-        push()
-        push()
-        assert.lengthOf(list,1)
+        const stub = sinon.stub().returns(true)
+        const run = getSingle(stub);
+        for(let i =0;i<100;i++){
+            run()
+        }
+        sinon.assert.calledOnce(stub)
     })
 })
