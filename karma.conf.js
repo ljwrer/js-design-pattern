@@ -17,7 +17,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/**/*.spec.js'
+            'test/browser/**/*.spec.js'
         ],
 
 
@@ -57,7 +57,7 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
 
 
         // Continuous Integration mode
@@ -71,6 +71,10 @@ module.exports = function (config) {
         webpack:{
             module: {
                 loaders: [
+                    {
+                        test: /\.vue$/,
+                        loader: 'vue-loader'
+                    },
                     {
                         test: /\.js$/,
                         exclude: /(node_modules|bower_components)/,
