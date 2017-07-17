@@ -24,9 +24,6 @@ describe('Animate', function () {
     })
     describe('#update',function () {
         it('should update',function () {
-            const a = 1;
-            const b = ()=>{ }
-            console.log(a)
             assert.isFunction(animate.update)
         })
         it('should update a',function () {
