@@ -18,4 +18,17 @@ describe('timeThunk', function () {
         sinon.assert.callCount(spy,100)
         clock.restore()
     })
+    it('should be have default count to 1', function () {
+        const clock = sinon.useFakeTimers();
+        const spy = sinon.spy()
+        const timeThunkAdd = timeThunk(Array(10).fill(null),spy,undefined,1000)
+        timeThunkAdd()
+        clock.tick(2500)
+        sinon.assert.callCount(spy,3)
+        clock.tick(1000)
+        sinon.assert.callCount(spy,4)
+        clock.tick(2000)
+        sinon.assert.callCount(spy,6)
+        clock.restore()
+    })
 })

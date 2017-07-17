@@ -8,15 +8,13 @@ describe('namespace', function () {
     beforeEach(function () {
         root = {}
     })
-    it('one space', function () {
+    it('should create space', function () {
         namespace(root,'aa')
         assert.isOk(root.hasOwnProperty('aa'))
     })
-    it('three space', function () {
+    it('should use exist name space', function () {
         namespace(root,'aa.bb.cc')
         assert.isOk(root.aa.bb.hasOwnProperty('cc'))
-    })
-    it('five space', function () {
         namespace(root,'aa.bb.cc.dd.ee')
         assert.isOk(root.aa.bb.cc.dd.hasOwnProperty('ee'))
     })
