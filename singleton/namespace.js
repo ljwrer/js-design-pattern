@@ -3,6 +3,7 @@
  */
 const uncurrying = require('../clousure/uncurrying')
 const has = uncurrying(Object.prototype.hasOwnProperty)
+/* istanbul ignore next */
 const _namespace = function (root,propList) {
     if(propList.length){
         const prop = propList.shift();

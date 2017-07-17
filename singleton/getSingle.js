@@ -1,6 +1,7 @@
 /**
  * Created by Ray on 2017/7/12.
  */
+/* istanbul ignore next */
 const ProxySingleton = function (fn) {
     let instance
     return function () {

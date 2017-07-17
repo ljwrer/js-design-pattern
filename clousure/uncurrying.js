@@ -7,6 +7,7 @@ const uncurrying = function (fn) {
         return fn.apply(obj,arguments)
     }
 }
+/* istanbul ignore next */
 Function.prototype.uncurrying1 = function () {
     const self = this
     return function () {
@@ -14,12 +15,14 @@ Function.prototype.uncurrying1 = function () {
         return self.apply(obj,arguments)
     }
 }
+/* istanbul ignore next */
 Function.prototype.uncurrying2 = function () {
     const self = this
     return function () {
         return Function.prototype.call.apply(self,arguments)
     }
 }
+/* istanbul ignore next */
 Function.prototype.uncurrying3 = function () {
     return (...args)=>this.apply(...args)
 }
