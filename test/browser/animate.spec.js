@@ -1,36 +1,86 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const Animate = require('../../singleton/Animate')
+const Animate = require('../../strategy/Animate')
 const sinon = require("sinon");
-const assert = require('chai').assert;
+const chai = require('chai');
+var chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+const assert = chai.assert;
 describe('Animate', function () {
-    let animate;
-    beforeEach(function () {
-        animate = new Animate()
-    })
-    afterEach(function () {
-        animate = null
-    })
-    describe('#start',function () {
-        it('should start',function () {
-            assert.isFunction(animate.start)
+    describe('#static',function () {
+        it('should have static tween',function () {
+            assert.isObject(Animate.tween)
         })
     })
-    describe('#step',function () {
-        it('should step',function () {
-            assert.isFunction(animate.step)
+    describe('#constructor',function () {
+        const div = document.querySelector('#strategy-animate')
+        const animate = new Animate(div)
+        it('should have dom',function () {
+            assert.instanceOf(animate,Animate)
+            assert.property(animate.dom,'tagName')
+        })
+        it('should have default prop',function () {
+            const defaultProp = {
+                startPos:0,
+                endPos:0,
+                duration:0,
+                propName:null,
+                easing:null,
+                startTime:0
+            }
+            assert.include(animate,defaultProp)
+        })
+    })
+    describe('#start',function () {
+        let div,animate;
+        beforeEach(function () {
+            div = document.querySelector('#strategy-animate')
+            animate = new Animate(div)
+        })
+        afterEach(function () {
+            div.style.transform = ''
+            div = null
+            animate = null
+        })
+        it('should animate to destination x',function (done) {
+            animate.start('x',200,1000,'sineaseIn')
+            setTimeout(function () {
+                assert.propertyVal(animate.dom.style,'transform','translateX(200px)')
+                done()
+            },1100)
+        })
+        it('should animate to destination y',function (done) {
+            animate.start('y',200,1000,'sineaseIn')
+            setTimeout(function () {
+                assert.propertyVal(animate.dom.style,'transform','translateY(200px)')
+                done()
+            },1100)
+        })
+        it('should animate to destination with default',function (done) {
+            animate.dom.style.transform = 'translateY(100px)'
+            animate.start('y',200,1000,'sineaseIn')
+            setTimeout(function () {
+                assert.propertyVal(animate.dom.style,'transform','translateY(200px)')
+                done()
+            },1100)
+        })
+        it('should throw a TypeError if propName wrong',function () {
+            return assert.isRejected(new Promise(function () {
+                animate.start('a',200,1000,'sineaseIn')
+            }), TypeError);
         })
     })
     describe('#update',function () {
-        it('should update',function () {
-            assert.isFunction(animate.update)
+        const div = document.querySelector('#strategy-animate')
+        const animate = new Animate(div)
+        animate.propName = 'x'
+        it('should update prop value',function () {
+            animate.update(100)
+            assert.propertyVal(animate.dom.style,'transform','translateX(100px)')
         })
-        it('should update a',function () {
-            assert.equal(animate.update(1),1)
-        })
-        it('should update none',function () {
-            assert.equal(animate.update(),'no args')
+        after(function () {
+            div.style.transform = ''
         })
     })
 })

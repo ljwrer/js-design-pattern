@@ -17,7 +17,11 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/**/*.spec.js'
+            {
+                pattern: 'test/browser/**/*.spec.js',
+                served: true,
+                watched: true
+            }
         ],
 
 
@@ -28,7 +32,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'test/**/*.spec.js':['webpack','sourcemap']
+            'test/browser/**/*.spec.js':['webpack','sourcemap']
         },
 
 
@@ -58,7 +62,8 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['Chrome'],
-
+        customContextFile:'static/context.html',
+        customDebugFile:'static/debug.html',
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

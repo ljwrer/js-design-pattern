@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+This file is almost the same as context.html - loads all source files,
+but its purpose is to be loaded in the main frame (not within an iframe),
+just for immediate execution, without reporting to Karma server.
+-->
+<html>
+<head>
+    <title>Karma DEBUG RUNNER</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="//cdn.staticfile.org/normalize/6.0.0/normalize.min.css">
+    <link href="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.min.css" rel="stylesheet">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid deepskyblue;
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="strategy-animate"></div>
+<!-- The scripts need to be at the end of body, so that some test running frameworks
+ (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
+ into it. If it is before body, then it fails to find the body and crashes and burns in an epic
+ manner. -->
+<script src="context.js"></script>
+<script src="debug.js"></script>
+<script type="text/javascript">
+    // Configure our Karma
+    window.__karma__.config = {"args":[],"useIframe":true,"runInParent":false,"captureConsole":true,"clearContext":true,"mocha":{}};
+
+
+    // All served files with the latest timestamps
+    window.__karma__.files = {
+        '/base/node_modules/mocha/mocha.js': '0863072fa0d42c0f56c2c43e36b6f2bd01402ae2',
+        '/base/node_modules/karma-mocha/lib/adapter.js': 'e8826109cf50b958ee4bd667517729ffdd4de363',
+        '/base/test/browser/animate.spec.js': 'bb32f289e8a76b44184cc5985438d4dd0e3f1860'
+    };
+
+</script>
+<!-- Dynamically replaced with <script> tags -->
+<script type="text/javascript" src="/base/node_modules/mocha/mocha.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/base/node_modules/karma-mocha/lib/adapter.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/base/test/browser/animate.spec.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    window.__karma__.loaded();
+</script>
+</body>
+</html>
