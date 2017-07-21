@@ -1,0 +1,22 @@
+const assert = require('chai').assert
+const sinon = require('sinon')
+const createProxyFactory = require('../proxy/createProxyFactory')
+describe('proxy factory',function () {
+    it('should use cache when invoke with repeat args',function () {
+        const stub = sinon.stub()
+        stub.withArgs(1).returns(0)
+        stub.withArgs(1,2).returns(1)
+        stub.withArgs(2,3,4).returns(2)
+        const proxyStub = createProxyFactory(stub)
+        assert.equal(proxyStub(1),0)
+        assert.equal(proxyStub(1,2),1)
+        assert.equal(proxyStub(2,3,4),2)
+        assert.equal(proxyStub(1),0)
+        assert.equal(proxyStub(1,2),1)
+        assert.equal(proxyStub(2,3,4),2)
+        assert.equal(proxyStub(1),0)
+        assert.equal(proxyStub(1,2),1)
+        assert.equal(proxyStub(2,3,4),2)
+        sinon.assert.calledThrice(stub)
+    })
+})
