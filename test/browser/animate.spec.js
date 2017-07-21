@@ -37,6 +37,7 @@ describe('Animate', function () {
         beforeEach(function () {
             div = document.querySelector('#strategy-animate')
             animate = new Animate(div)
+            div.style.transform = ''
         })
         afterEach(function () {
             div.style.transform = ''
@@ -44,26 +45,23 @@ describe('Animate', function () {
             animate = null
         })
         it('should animate to destination x',function (done) {
-            animate.start('x',200,1000,'sineaseIn')
-            setTimeout(function () {
+            animate.start('x',200,500,'sineaseIn',function () {
                 assert.propertyVal(animate.dom.style,'transform','translateX(200px)')
                 done()
-            },1100)
+            })
         })
         it('should animate to destination y',function (done) {
-            animate.start('y',200,1000,'sineaseIn')
-            setTimeout(function () {
+            animate.start('y',200,500,'sineaseIn',function () {
                 assert.propertyVal(animate.dom.style,'transform','translateY(200px)')
                 done()
-            },1100)
+            })
         })
         it('should animate to destination with default',function (done) {
             animate.dom.style.transform = 'translateY(100px)'
-            animate.start('y',200,1000,'sineaseIn')
-            setTimeout(function () {
+            animate.start('y',200,500,'sineaseIn',function () {
                 assert.propertyVal(animate.dom.style,'transform','translateY(200px)')
                 done()
-            },1100)
+            })
         })
         it('should throw a TypeError if propName wrong',function () {
             return assert.isRejected(new Promise(function () {

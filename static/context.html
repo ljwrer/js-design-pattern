@@ -26,6 +26,15 @@ Reloaded before every execution run.
      to have already been created so they can insert their magic into it. For example, if loaded
      before body, Angular Scenario test framework fails to find the body and crashes and burns in
      an epic manner. -->
+<br>
+<div id="strategy-validate">
+    <form class="form">
+        <input name="userName" data-validate="isNotEmpty">
+        <input name="password" data-validate="minLength:6">
+        <input name="phone" data-validate="isMobile">
+        <input name="id" data-validate="minLength:6|maxLength:10">
+    </form>
+</div>
 
 <script src="context.js"></script>
 <script type="text/javascript">

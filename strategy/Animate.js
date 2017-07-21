@@ -40,7 +40,7 @@ class Animate {
         })
     }
 
-    start(propName, endPos, duration, easing) {
+    start(propName, endPos, duration, easing, cb) {
         Object.assign(this, {
             propName,
             endPos,
@@ -52,6 +52,7 @@ class Animate {
         let animationId;
         const animate = () => {
             if (this.step() === false) {
+                cb&&cb()
                 cancelAnimationFrame(animationId)
             } else {
                 animationId = requestAnimationFrame(animate)

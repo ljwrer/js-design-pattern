@@ -6,6 +6,7 @@ just for immediate execution, without reporting to Karma server.
 -->
 <html>
 <head>
+%X_UA_COMPATIBLE%
     <title>Karma DEBUG RUNNER</title>
     <link href="favicon.ico" rel="icon" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,6 +24,14 @@ just for immediate execution, without reporting to Karma server.
 </head>
 <body>
 <div class="box" id="strategy-animate"></div>
+<div id="strategy-validate">
+    <form class="form">
+        <input name="userName" data-validate="isNotEmpty">
+        <input name="password" data-validate="minLength:6">
+        <input name="phone" data-validate="isMobile">
+        <input name="id" data-validate="minLength:6|maxLength:10">
+    </form>
+</div>
 <!-- The scripts need to be at the end of body, so that some test running frameworks
  (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
  into it. If it is before body, then it fails to find the body and crashes and burns in an epic
@@ -31,21 +40,13 @@ just for immediate execution, without reporting to Karma server.
 <script src="debug.js"></script>
 <script type="text/javascript">
     // Configure our Karma
-    window.__karma__.config = {"args":[],"useIframe":true,"runInParent":false,"captureConsole":true,"clearContext":true,"mocha":{}};
-
+    %CLIENT_CONFIG%
 
     // All served files with the latest timestamps
-    window.__karma__.files = {
-        '/base/node_modules/mocha/mocha.js': '0863072fa0d42c0f56c2c43e36b6f2bd01402ae2',
-        '/base/node_modules/karma-mocha/lib/adapter.js': 'e8826109cf50b958ee4bd667517729ffdd4de363',
-        '/base/test/browser/animate.spec.js': 'bb32f289e8a76b44184cc5985438d4dd0e3f1860'
-    };
-
+    %MAPPINGS%
 </script>
 <!-- Dynamically replaced with <script> tags -->
-<script type="text/javascript" src="/base/node_modules/mocha/mocha.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/base/node_modules/karma-mocha/lib/adapter.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/base/test/browser/animate.spec.js" crossorigin="anonymous"></script>
+%SCRIPTS%
 <script type="text/javascript">
     window.__karma__.loaded();
 </script>
