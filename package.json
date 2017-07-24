@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "jquery": "^3.2.1",
     "pubsub-js": "^1.5.7"
   }
 }
