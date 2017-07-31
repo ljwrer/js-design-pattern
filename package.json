@@ -29,7 +29,8 @@
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test nyc mocha",
-    "karma": "cross-env NODE_ENV=test karma start"
+    "karma": "cross-env NODE_ENV=test karma start",
+    "cover": "cross-env NODE_ENV=test nyc --reporter=html mocha"
   },
   "dependencies": {
     "axios": "^0.16.2",
