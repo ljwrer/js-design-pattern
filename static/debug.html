@@ -32,6 +32,16 @@ just for immediate execution, without reporting to Karma server.
         <input name="id" data-validate="minLength:6|maxLength:10">
     </form>
 </div>
+<div id="mediator">
+    <div class="btn-box">
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+    </div>
+    <div class="count"></div>
+</div>
 <!-- The scripts need to be at the end of body, so that some test running frameworks
  (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
  into it. If it is before body, then it fails to find the body and crashes and burns in an epic

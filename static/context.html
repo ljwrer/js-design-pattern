@@ -21,11 +21,11 @@ Reloaded before every execution run.
     </style>
 </head>
 <body>
-<div class="box" id="strategy-animate"></div>
 <!-- The scripts need to be in the body DOM element, as some test running frameworks need the body
      to have already been created so they can insert their magic into it. For example, if loaded
      before body, Angular Scenario test framework fails to find the body and crashes and burns in
      an epic manner. -->
+<div class="box" id="strategy-animate"></div>
 <br>
 <div id="strategy-validate">
     <form class="form">
@@ -35,7 +35,16 @@ Reloaded before every execution run.
         <input name="id" data-validate="minLength:6|maxLength:10">
     </form>
 </div>
-
+<div id="mediator">
+    <div class="btn-box">
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+        <button>click</button>
+    </div>
+    <div class="count"></div>
+</div>
 <script src="context.js"></script>
 <script type="text/javascript">
     // Configure our Karma and set up bindings
