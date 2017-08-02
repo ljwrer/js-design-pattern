@@ -44,5 +44,8 @@ describe('chain', function () {
         const chain = createChain(createChain(stub1, stub2), stub3)
         const ret = chain(1, 3)
         assert.equal(ret, 3)
+        const otherChain = createChain(createChain(stub3, stub2), stub1)
+        const otherRet = otherChain(1, 3)
+        assert.equal(otherRet, 3)
     })
 })
