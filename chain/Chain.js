@@ -12,7 +12,7 @@ class Chain{
         return successor
     }
     passRequest(...args){
-        const ret = this.fn.apply(this,args)
+        const ret = this.fn(...args)
         if(ret === NextSuccessorSymbol){
             return this.successor&&this.successor.passRequest(...args)
         }else {
