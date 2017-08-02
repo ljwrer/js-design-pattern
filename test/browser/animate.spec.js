@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const Animate = require('../../strategy/Animate')
+const Animate = require('../../src/strategy/Animate')
 const sinon = require("sinon");
 const chai = require('chai');
 var chaiAsPromised = require("chai-as-promised");

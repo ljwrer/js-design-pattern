@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const currying = require('../clousure/currying')
+const currying = require('../src/clousure/currying')
 const assert = require('chai').assert;
 describe('curring', function () {
     it('should return a curring function', function () {

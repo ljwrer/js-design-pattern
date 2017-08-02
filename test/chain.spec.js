@@ -1,5 +1,5 @@
-const Chain = require('../chain/Chain')
-const createChain = require('../chain/createChain')
+const Chain = require('../src/chain/Chain')
+const createChain = require('../src/chain/createChain')
 const snion = require('sinon')
 const assert = require('chai').assert
 describe('Chain', function () {

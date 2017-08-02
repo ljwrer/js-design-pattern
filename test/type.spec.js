@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const type = require('../object/type')
+const type = require('../src/object/type')
 const assert = require('chai').assert;
 describe('type', function () {
     // 'Undefined','Null','String','Number','Date','Array','Function','Object','Map','Set'

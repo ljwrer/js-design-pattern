@@ -1,4 +1,4 @@
-const Validator = require('../../strategy/Validator')
+const Validator = require('../../src/strategy/Validator')
 const sinon = require("sinon");
 const assert = require('chai').assert;
 describe('validator',function () {

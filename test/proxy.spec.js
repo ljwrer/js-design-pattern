@@ -1,7 +1,7 @@
 const assert = require('chai').assert
 const sinon = require('sinon')
-const createProxyFactory = require('../proxy/createProxyFactory')
-const createTimeProxy = require('../proxy/createTimeProxy')
+const createProxyFactory = require('../src/proxy/createProxyFactory')
+const createTimeProxy = require('../src/proxy/createTimeProxy')
 describe('proxy factory',function () {
     it('should use cache when invoke with repeat args',function () {
         const stub = sinon.stub()

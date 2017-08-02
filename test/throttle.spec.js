@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const throttle = require('../clousure/throttle')
+const throttle = require('../src/clousure/throttle')
 const sinon = require('sinon')
 describe('throttle', function () {
     let clock;

@@ -1,4 +1,4 @@
-const compare = require('../iterator/compare')
+const compare = require('../src/iterator/compare')
 const assert = require('chai').assert;
 describe('compare', function () {
     it('should return true if equal', function () {

@@ -1,5 +1,5 @@
-const Folder = require('../composite/Folder')
-const File = require('../composite/File')
+const Folder = require('../src/composite/Folder')
+const File = require('../src/composite/File')
 const assert = require('chai').assert
 describe('composite', function () {
     describe('#execute()',function () {

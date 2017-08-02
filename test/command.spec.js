@@ -1,5 +1,5 @@
-const ListCommand = require('../command/undo-redo')
-const MacroCommand = require('../command/MacroCommand')
+const ListCommand = require('../src/command/undo-redo')
+const MacroCommand = require('../src/command/MacroCommand')
 const assert = require('chai').assert
 describe('undo redo list', function () {
     let listCommand

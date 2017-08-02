@@ -1,4 +1,4 @@
-const objectPoolFactory = require('../pool/objectPoolFactory')
+const objectPoolFactory = require('../src/pool/objectPoolFactory')
 const assert = require('chai').assert
 class Foo{
 

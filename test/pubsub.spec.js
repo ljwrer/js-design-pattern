@@ -1,4 +1,4 @@
-const pubSub = require('../pubsub/pubsub')
+const pubSub = require('../src/pubsub/pubsub')
 const assert = require('chai').assert
 const sinon = require('sinon')
 describe('pubsub',function () {

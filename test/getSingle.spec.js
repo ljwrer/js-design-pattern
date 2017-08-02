@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const getSingle = require('../singleton/getSingle')
+const getSingle = require('../src/singleton/getSingle')
 const sinon = require("sinon");
 const assert = require('chai').assert;
 class Person{

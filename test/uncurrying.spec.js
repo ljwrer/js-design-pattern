@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const uncurrying = require('../clousure/uncurrying')
+const uncurrying = require('../src/clousure/uncurrying')
 const assert = require('chai').assert;
 describe('uncurring', function () {
     it('should return a uncurring function', function () {

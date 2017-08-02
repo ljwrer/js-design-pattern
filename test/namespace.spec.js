@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const namespace = require('../singleton/namespace')
+const namespace = require('../src/singleton/namespace')
 const assert = require('chai').assert;
 describe('namespace', function () {
     let root = {}

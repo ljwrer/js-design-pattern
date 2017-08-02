@@ -1,4 +1,4 @@
-const iterator = require('../iterator/iterator')
+const iterator = require('../src/iterator/iterator')
 const assert = require('chai').assert;
 describe('iterator', function () {
     it('should return iterator object', function () {

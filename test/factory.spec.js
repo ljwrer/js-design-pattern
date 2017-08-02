@@ -1,7 +1,7 @@
 /**
  * Created by Ray on 2017/7/11.
  */
-const factory = require('../object/factory')
+const factory = require('../src/object/factory')
 const assert = require('chai').assert;
 function Person(name, age) {
     this.name = name
